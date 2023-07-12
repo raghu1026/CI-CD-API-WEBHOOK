@@ -11,7 +11,7 @@ pipeline {
     stages {
         stage('MVN Build and Publish the Unit Test Results') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn clean package'
             }
             post {
                 always {
