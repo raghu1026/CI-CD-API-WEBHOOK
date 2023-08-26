@@ -28,10 +28,10 @@ pipeline {
         }
         stage ('Code Quality') {
             environment {
-                scannerHome = tool 'sonar-scanner-4.7'
+                scannerHome = tool 'valaxy-sonar-scanner'
             }
             steps {
-                withSonarQubeEnv('SonarQube-Server-CE-9.8') {
+                withSonarQubeEnv('valaxy-sonarqube-server') {
                     sh "${scannerHome}/bin/sonar-scanner \
                     -D sonar.projectKey=cicd-demo \
                     -D sonar.exclusions=vendor/**,resources/**,**/*.java"
