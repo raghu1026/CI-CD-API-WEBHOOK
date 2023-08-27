@@ -33,7 +33,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('valaxy-sonarqube-server') {
                     sh "${scannerHome}/bin/sonar-scanner \
-                    -D sonar.projectKey=cicd-demo \
+                    -D sonar.projectKey=sonar-server \
                     -D sonar.exclusions=vendor/**,resources/**,**/*.java"
                 }
             }
