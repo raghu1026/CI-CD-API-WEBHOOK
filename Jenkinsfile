@@ -32,13 +32,7 @@ pipeline {
             }
             steps {
                 withSonarQubeEnv('valaxy-sonarqube-server') {
-                   /* sh "${scannerHome}/bin/sonar-scanner \
-                    -D sonar.projectKey=sonar-server \
-                    -D sonar.exclusions=vendor/**,resources/**,**/*.java"
-                        */
-                  sh "${scannerHome}/bin/sonar:sonar \
-                  -Dsonar.host.url=http://54.82.132.247:9000 \
-                  -Dsonar.login=sonar-server \
+                   sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
         }
