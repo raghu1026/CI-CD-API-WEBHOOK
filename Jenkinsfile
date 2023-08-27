@@ -38,7 +38,7 @@ pipeline {
                         */
                   sh "${scannerHome}/bin/sonar:sonar \
                   -Dsonar.host.url=http://54.82.132.247:9000 \
-                  -Dsonar.login=3bffe85cdbbdfe45cd5f7ee3745c4aac1ec012d5
+                  -Dsonar.login=sonar-server \
                 }
             }
         }
