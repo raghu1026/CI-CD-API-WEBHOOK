@@ -31,7 +31,7 @@ pipeline {
             steps {
                 withSonarQubeEnv('sonarqube-server') {
                     sh "${scannerHome}/bin/sonar-scanner \
-                    -D sonar.projectKey=sonar-server \
+                    -D sonar.projectKey=first-sonar \
                     -D sonar.exclusions=vendor/**,resources/**,**/*.java"
                 }
             }
