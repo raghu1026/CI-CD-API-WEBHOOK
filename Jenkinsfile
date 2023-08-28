@@ -24,12 +24,12 @@ pipeline {
         }
         stage ('Code Quality') {
             environment {
-                scannerHome = tool 'sonar-scanner-4.7'
+                scannerHome = tool 'sonar-scanner'
             }
             steps {
-                withSonarQubeEnv('SonarQube-Server-CE-9.8') {
+                withSonarQubeEnv('sonarqube-server') {
                     sh "${scannerHome}/bin/sonar-scanner \
-                    -D sonar.projectKey=cicd-demo \
+                    -D sonar.projectKey=sonar-server \
                     -D sonar.exclusions=vendor/**,resources/**,**/*.java"
                 }
             }
