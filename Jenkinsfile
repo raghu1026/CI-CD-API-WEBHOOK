@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'maven'
-        }
-    }
+    agent any
     tools { 
         maven 'Maven-360' 
         jdk 'JAVA-11' 
@@ -15,7 +11,7 @@ pipeline {
     stages {
         stage('MVN Build and Publish the Unit Test Results') {
             steps {
-                sh 'mvn clean package'
+                sh 'mvn clean install'
             }
             post {
                 always {
@@ -28,11 +24,13 @@ pipeline {
         }
         stage ('Code Quality') {
             environment {
-                scannerHome = tool 'valaxy-sonar-scanner'
+                scannerHome = tool 'sonar-scanner-4.7'
             }
             steps {
-                withSonarQubeEnv('valaxy-sonarqube-server') {
-                   sh "${scannerHome}/bin/sonar-scanner"
+                withSonarQubeEnv('SonarQube-Server-CE-9.8') {
+                    sh "${scannerHome}/bin/sonar-scanner \
+                    -D sonar.projectKey=cicd-demo \
+                    -D sonar.exclusions=vendor/**,resources/**,**/*.java"
                 }
             }
         }
