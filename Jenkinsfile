@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label 'maven'
+    }
     tools { 
         maven 'Maven-360' 
         jdk 'JAVA-11' 
